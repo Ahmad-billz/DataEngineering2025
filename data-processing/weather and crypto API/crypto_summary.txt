@@ -1,0 +1,16 @@
+--- Cryptocurrency Data Summary ---
+
+Name: Bitcoin
+Price (USD): $90833.01
+24h Change: 1.50%
+-------------------------
+Name: Ethereum
+Price (USD): $3128.64
+24h Change: 3.32%
+-------------------------
+Name: Solana
+Price (USD): $133.80
+24h Change: 1.33%
+-------------------------
+
+Today's Biggest Gainer: Ethereum with a 3.32% increase.
