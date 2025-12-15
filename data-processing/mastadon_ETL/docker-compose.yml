@@ -1,0 +1,24 @@
+services:
+  analytics_db:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER_ANALYTICS}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_ANALYTICS}
+      POSTGRES_DB: ${POSTGRES_DB_ANALYTICS}
+    ports:
+      - 5436:5432
+    volumes:
+      - ./data_clean:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user_analytics  -d mastodon_analytics"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  etl_service:
+    build: ./etl_service
+    env_file:
+      - ./.env 
+    depends_on:
+      analytics_db:
+        condition: service_healthy
